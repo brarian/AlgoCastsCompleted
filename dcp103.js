@@ -11,6 +11,7 @@ function code(str, input) {
   for (let i = 0; i < input.length; i++) {
     lastsetArr.push(str.lastIndexOf(input[i]));
   }
+
   let sorttedlastsetArr = lastsetArr.sort((a, b) => a - b);
   let first = str.substr(sortedSetArr[0], sortedSetArr[-1]);
   let second = str.substr(sorttedlastsetArr[0], sorttedlastsetArr[-1]);
@@ -23,4 +24,4 @@ function code(str, input) {
   } else return null;
 }
 
-code("figehaeci", ["a", "e", "i"]);
+
