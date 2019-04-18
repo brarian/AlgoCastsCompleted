@@ -4,7 +4,6 @@
 // Follow-up: If you can preprocess the array, can you do this in constant time?
 
 function code(arr, index){
-  let min = 0; 
   let moreThanIndex  = arr.filter(i => i > arr[index]);
   if (!moreThanIndex){
     return null; 
