@@ -6,12 +6,14 @@ function code(arr){
   }
 
   let plusOne = (a)
-  console.log("sdfdsfdsfdf", plusOne)
+  console.log("sdfdsfdsfdf", plusOne );
+
   let strArr = plusOne.toString().split("");
   
   
   let nums = strArr.map(i => Number(i))
-  return nums
+  return nums 
+
   
 }
 
