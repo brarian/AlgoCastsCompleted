@@ -1,14 +1,15 @@
-const strong = pw => {
+const strong = (n, password) => {
   const numbers = "0123456789";
   const lower_case = "abcdefghijklmnopqrstuvwxyz";
   const upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const special_characters = "!@#$%^&*()-+";
   let count = 0;
-  pw = pw.split("");
-  let num = pw.filter(i => numbers.split("").includes(i)).length;
-  let low = pw.filter(i => lower_case.split("").includes(i)).length;
-  let up = pw.filter(i => upper_case.split("").includes(i)).length;
-  let sp = pw.filter(i => special_characters.split("").includes(i)).length;
+  password = password.split("");
+  let num = password.filter(i => numbers.split("").includes(i)).length;
+  let low = password.filter(i => lower_case.split("").includes(i)).length;
+  let up = password.filter(i => upper_case.split("").includes(i)).length;
+  let sp = password.filter(i => special_characters.split("").includes(i))
+    .length;
 
   if (num === 0) {
     count += 1;
@@ -29,4 +30,4 @@ const strong = pw => {
   return count;
 };
 
-console.log(strong("Ab1"));
+console.log(strong("Ab1%"));
