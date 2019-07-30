@@ -15,4 +15,10 @@ const fn = (one, two) => {
   }
 };
 
+const fn = (obj, source) => {
+  return Object.keys(source).every(
+    key => obj.hasOwnProperty(key) && obj[key] === source[key]
+  );
+};
+
 console.log(fn(obj1, obj2));

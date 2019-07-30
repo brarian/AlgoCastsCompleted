@@ -7,13 +7,15 @@
 //   }
 // }
 const fn = arr => {
-  let newArr = [];
-  for (let i = 0; i < arr.length + 1; i++) {
-    for (let j = i + 1; j < arr.length + 1; j++) {
-      newArr.push(arr.slice(i, j));
-    }
-  }
-  return newArr;
+  // let newArr = [];
+  // for (let i = 0; i < arr.length + 1; i++) {
+  //   for (let j = i + 1; j < arr.length + 1; j++) {
+  //     newArr.push(arr.slice(i, j));
+  //   }
+  // }
+  // return newArr;
+
+  return arr.reduce((s, e) => s.concat(s.map(i => [e].concat(i))), [[]]);
 };
 
 console.log(fn([1, 2, 3]));
