@@ -1,0 +1,27 @@
+Sales Tax - Java 
+
+Assumptions
+I assume the receipt input will always be in the following format: quantity + if imported + item + “at” + price and no other text
+I assume that the receipt calculation will have to calculate prices where the item quantity is more than 1. 
+I assume that each new receipt item in the input text file will be on a new line. 
+I assume that only one receipt will be passed at a time. 
+
+Design
+I’ve created individual methods to do the following: 
+numberOfItems -  returns a number which indicates how many of an item is on the receipt, the quantity variable 
+beforeTaxPriceString - returns the string value of the price of each line item
+pBeforeTax - returns beforeTaxPriceString to a decimal, returns the priceBeforeTax variable 
+getItemName - return everything before “at” so we can have a item name string output for our result 
+nonExempt - returns the tax price if the item is non exempt from sales tax
+isImported - returns the tax price if the item is imported 
+priceWithTax - returns the item’s price with all applicable taxes 
+roundUp - returns the tax value rounded up to the nearest .05 
+
+The program begins by reading the input text file and adding each receipt line item as an element of the ArrayList recieptItems. totalPrice and totalTaxes are initialized for later use to keep current totals of our total item price and total tax price. While looping through the recieptItems arrayList the priceWithTax method is called which returns the item’s quantity * item’s price + all applicable  taxes. The returned  priceWithTax value is used to print a new line in our output recept which is the item and its price with taxes. 
+While inside the loop each line item’s priceWithTax is summed to current totalPrice price and inside the loop each new line item’s total tax value is summed to the current totalTaxes price. Once the program exits the loop the totalTaxes and totalPrice are printed. 
+
+
+Instructions 
+Replace input.txt with your file in src/app/input.txt
+Add input file name as a string as argument to new FileReader()
+In terminal run “java Salestax.java” 
