@@ -15,3 +15,7 @@ var hasCycle = function(head) {
 
   return true;
 };
+
+//time complexity - o(n) - best case no cycle
+//worst case o(n+k) --> distance between 2 runners / difference of speed - the distance is at most cyclic length k
+//number of iterations - cyclic length K
