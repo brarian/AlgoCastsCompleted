@@ -1,22 +1,26 @@
 function mergeRanges(meetings) {
-  let timerange = [];
-  meetings.sort((a, b) => a.startTime - b.startTime);
   if (meetings.length == 1) return meetings;
-  for (let i = 0; i < meetings.length; i++) {
-    if (meetings[i]['endTime'] >= meetings[i + 1]['startTime']) {
-      timerange.push(
-        `{startTime: ${meetings[i]['startTime']}, endTime: ${
-          meetings[i + 1]['endTime']
-        }`
+
+  let sortedMeetings = meetings.sort((a, b) => a.startTime - b.startTime);
+  const mergedMeetings = [sortedMeetings[0]];
+
+  for (let i = 1; i < meetings.length; i++) {
+    const currentMeeting = sortedMeetings[i];
+    const lastMergedMeeting = mergedMeetings[mergedMeetings.length - 1];
+
+    if (currentMeeting.startTime <= lastMergedMeeting.endTime) {
+      lastMergedMeeting.endTime = Math.max(
+        lastMergedMeeting.endTime,
+        currentMeeting.endTime
       );
-      i++;
     } else {
-      timerange.push(meetings[i]);
+      mergedMeetings.push(currentMeeting);
     }
   }
 
-  return timerange;
+  return mergedMeetings;
 }
+
 mergeRanges([
   { startTime: 1, endTime: 4 },
   { startTime: 2, endTime: 5 },
