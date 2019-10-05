@@ -19,3 +19,19 @@ function hasPalindromePermutation(theString) {
   return true;
   return false;
 }
+
+function palindrome(theString) {
+  let unique = new Set();
+
+  for (let i of theString) {
+    if (!unique.has(i)) {
+      unique.add(i);
+    } else {
+      unique.delete(i);
+    }
+  }
+  if (unique.size > 1) {
+    return false;
+  }
+  return true;
+}
