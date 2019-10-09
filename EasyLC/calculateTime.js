@@ -1,7 +1,7 @@
 var calculateTime = function(keyboard, word) {
   let map = new Map();
   for (let i = 0; i < keyboard.length; i++) {
-    map.set(keyboard[i], i + 1);
+    map.set(keyboard[i], i);
   }
   let sum = 0;
   let starter;
