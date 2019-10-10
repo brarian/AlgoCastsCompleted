@@ -34,3 +34,27 @@ var lengthOfLongestSubstring = function(s) {
   }
   return max;
 };
+
+var lengthOfLongestSubstring = function(s) {
+  let max = 0;
+  let leftPointer = 0;
+  let rightPointer = 0;
+  let unique = [];
+
+  while (rightPointer < s.length) {
+    const letter = s[rightPointer];
+
+    if (unique.indexOf(letter) === -1) {
+      unique.push(letter);
+      rightPointer++;
+    } else {
+      unique.shift();
+      leftPointer++;
+    }
+
+    if (unique.length > max) {
+      max = unique.length;
+    }
+  }
+  return max;
+};
