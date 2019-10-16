@@ -15,3 +15,18 @@ numbers = list(range(20))
 
 chars = len(list("hello world"))
 # print(chars) - returns char count
+
+
+alpha = ["b", "r", "a", "r", "i", "a", "n"]
+alpha[3] = "Q"
+# print(alpha[::2])
+# ::# step throught a list
+# every other index skipped
+
+numbers = list(range(21))
+
+# print(numbers[::-1])
+
+
+for letter in enumerate(letters):
+    print(letter[0])
