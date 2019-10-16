@@ -6,3 +6,4 @@ var sortArrayByParity = function(A) {
   let odd = A.filter(el => el % 2 !== 0);
   return [...even, ...odd];
 };
+cd;
