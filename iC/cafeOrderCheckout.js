@@ -1,22 +1,22 @@
 function isFirstComeFirstServed(takeOutOrders, dineInOrders, servedOrders) {
   // Check if we're serving orders first-come, first-served
-
-  let map = new Map();
-
-  let res = [];
-  for (i of takeOutOrders) {
-    res.push(servedOrders.indexOf(i));
-  }
-  let sortedTakeout = [...res].sort((a, b) => a - b);
-
-  let res1 = [];
-  for (i of dineInOrders) {
-    res1.push(servedOrders.indexOf(i));
-  }
-  let sortedDineIn = [...res1].sort((a, b) => a - b);
-
-  if (res === sortedTakeout && res1 === sortedDineIn) {
+  if (servedOrders.length === 0) {
     return true;
   }
-  return false;
+  if (takeOutOrders[0] === servedOrders[0]) {
+    return isFirstComeFirstServed(
+      takeOutOrders.slice(1),
+      dineInOrders,
+      servedOrders.slice(1)
+    );
+  } else if (dineInOrders[0] === servedOrders[0]) {
+    return isFirstComeFirstServed(
+      dineInOrders.slice(1),
+      takeOutOrders,
+      servedOrders.slice(1)
+    );
+  } else {
+    return false;
+  }
+  return true;
 }
