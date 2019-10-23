@@ -1,37 +1,45 @@
 class Node {
-  constructor(value, next = null) {
+  constructor(value) {
     this.value = value;
     this.next = null;
   }
 }
 
 class LinkedList {
-  constructor(head) {
+  constructor() {
     this.head = null;
-    this.count = 0;
   }
-  add(value) {
-    const node = new Node(value);
-    if (!this.head) {
-      this.head = node;
-      this.count++;
+
+  enqueue(el) {
+    if (this.head === null) {
+      this.head = new Node(el);
       return this.head;
     }
-    let tracker = this.head;
-
-    while (tracker.next !== null) {
-      tracker = tracker.next;
+    let newNode = new Node(el);
+    newNode.next = this.head;
+    this.head = newNode;
+    return this.head;
+  }
+  dequeue() {
+    if (!this.head) {
+      return;
     }
-    tracker.next = node;
-    this.count++;
-
+    if ((this.head.next = null)) {
+      return;
+    }
+    let node = this.head;
+    while (node.next !== null) {
+      node = node.next;
+    }
+    node.next = null;
     return this.head;
   }
 }
 
 const ll = new LinkedList();
-ll.add(3);
-ll.add(17);
-ll.add(5);
+ll.enqueue(4);
+ll.enqueue(5);
+
+ll.dequeue();
 
 console.log(ll);
