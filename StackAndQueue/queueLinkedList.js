@@ -22,16 +22,18 @@ class LinkedList {
   }
   dequeue() {
     if (!this.head) {
-      return;
+      return null;
     }
-    if ((this.head.next = null)) {
-      return;
+    if (this.head.next === null) {
+      return null;
     }
-    let node = this.head;
-    while (node.next !== null) {
-      node = node.next;
+    let first = this.head;
+    let second = this.head.next;
+    while (second.next !== null) {
+      first = second;
+      second = second.next;
     }
-    node.next = null;
+    first.next = null;
     return this.head;
   }
 }
@@ -39,7 +41,7 @@ class LinkedList {
 const ll = new LinkedList();
 ll.enqueue(4);
 ll.enqueue(5);
-
+ll.enqueue(15);
+ll.enqueue(17);
 ll.dequeue();
-
 console.log(ll);
