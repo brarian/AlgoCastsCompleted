@@ -36,3 +36,12 @@ SELECT
   *
 FROM emp_details
 WHERE EMP_LNAME= 'Dosni' OR EMP_LNAME='Mardy'
+
+
+-- 12. Write a query in SQL to display all the data of employees that work 
+-- in department 47 or department 63. 
+
+SELECT
+  *
+FROM emp_details
+WHERE EMP_DEPT = 47 OR EMP_DEPT =63
