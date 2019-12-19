@@ -21,3 +21,18 @@ WHERE commission BETWEEN '.10' AND '.12';
 SELECT *
 FROM orders
 WHERE (purch_amt < 200 OR NOT ord_date < '2012-02-10' AND customer_id < 3009)
+
+-- 9. Write a SQL statement to exclude the rows which satisfy 1)
+-- order dates are 2012-08-17 and purchase amount is below 1000 2) 
+-- customer id is greater than 3005 and purchase amount is below 1000.  
+SELECT *
+FROM orders
+WHERE NOT 
+((ord_date='2012-08-17' AND purch_amt < 1000) AND
+  customer_id > 3005)
+
+-- 11. Write a query in SQL to find the data of employees whose last name is Dosni or Mardy.  
+SELECT
+  *
+FROM emp_details
+WHERE EMP_LNAME= 'Dosni' OR EMP_LNAME='Mardy'
