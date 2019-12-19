@@ -13,3 +13,11 @@ WHERE NOT (ord_date = '2012-09-10 ' AND salesman_id=505)
 SELECT *
 FROM salesman
 WHERE commission BETWEEN '.10' AND '.12';
+
+
+-- 8. Write a SQL query to display all orders where purchase amount less than 200 
+-- or exclude those orders which order date is on or greater than 10th Feb,2012 
+-- and customer id is below 3009. Go to the editor
+SELECT *
+FROM orders
+WHERE (purch_amt < 200 OR NOT ord_date < '2012-02-10' AND customer_id < 3009)
