@@ -59,8 +59,8 @@ SELECT
   c.last_name,
   SUM(oi.quantity * oi.unit_price) AS total_sales
 FROM customers c
-  JOIN orders o    USING (customer_id)
-  JOIN order_items oi    USING (order_id)
+  JOIN orders o     USING (customer_id)
+  JOIN order_items oi     USING (order_id)
 WHERE state='VA'
 GROuP BY c.customer_id, 
 c.first_name, 
@@ -83,8 +83,8 @@ SELECT DISTINCT
   last_name,
   customer_id
 FROM orders o
-  JOIN customers c  USING (customer_id)
-  JOIN order_items oi  USING (order_id)
+  JOIN customers c   USING (customer_id)
+  JOIN order_items oi   USING (order_id)
 WHERE product_id = 3
 
 
@@ -96,6 +96,18 @@ FROM customers
 where customer_id IN (
 	SELECT o.customer_id
 from order_items oi
-  JOIN orders o  USING (order_id)
+  JOIN orders o   USING (order_id)
 WHERE product_id = 3
+)
+
+-- correlated subquery
+
+SELECT *
+FROM invoices i
+WHERE i.invoice_total > (
+	SELECT
+  AVG(invoice_total)
+FROM invoices
+Where client_id = i.client_id
+GROUP BY client_id
 )
