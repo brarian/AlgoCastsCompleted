@@ -59,10 +59,43 @@ SELECT
   c.last_name,
   SUM(oi.quantity * oi.unit_price) AS total_sales
 FROM customers c
-  JOIN orders o  USING (customer_id)
-  JOIN order_items oi  USING (order_id)
+  JOIN orders o    USING (customer_id)
+  JOIN order_items oi    USING (order_id)
 WHERE state='VA'
 GROuP BY c.customer_id, 
 c.first_name, 
 c.last_name
 HAVING total_sales > 100;
+
+-- Subquery 2
+SELECT
+  first_name,
+  salary
+from employees
+WHERE salary > (
+	SELECT AVG(salary)
+FROM employees
+);
+
+-- Subquery vs JOIN
+SELECT DISTINCT
+  first_name,
+  last_name,
+  customer_id
+FROM orders o
+  JOIN customers c  USING (customer_id)
+  JOIN order_items oi  USING (order_id)
+WHERE product_id = 3
+
+
+SELECT order_id, product_id
+from order_items
+WHERE product_id = 3;
+SELECT *
+FROM customers
+where customer_id IN (
+	SELECT o.customer_id
+from order_items oi
+  JOIN orders o  USING (order_id)
+WHERE product_id = 3
+)
