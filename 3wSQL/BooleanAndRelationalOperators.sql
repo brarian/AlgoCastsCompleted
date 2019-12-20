@@ -45,3 +45,9 @@ SELECT
   *
 FROM emp_details
 WHERE EMP_DEPT = 47 OR EMP_DEPT =63
+
+-- sql invoicing 
+-- invoices - number // client id 
+-- create copy of invoices and put it in a new table called invoices archived
+-- in that table. we want client name instead of client id 
+-- copy only invoice that have payment 
