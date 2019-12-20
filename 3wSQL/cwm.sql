@@ -39,3 +39,30 @@ FROM payments p
   ON p.payment_method = pm.payment_method_id
 GROUp BY date, payment_method
 ORDER BY date;
+
+--HAHVING
+USE sql_store;
+SELECT
+  first_name,
+  state,
+  COUNT(customer_id),
+  SUM(quantity*unit_price) AS total
+FROM customers
+  JOIN orders USING (customer_id)
+  JOIN order_items USING (order_id)  
+GROUP BY customer_id
+HAVING state='VA';
+
+SELECT
+  c.customer_id,
+  c.first_name,
+  c.last_name,
+  SUM(oi.quantity * oi.unit_price) AS total_sales
+FROM customers c
+  JOIN orders o  USING (customer_id)
+  JOIN order_items oi  USING (order_id)
+WHERE state='VA'
+GROuP BY c.customer_id, 
+c.first_name, 
+c.last_name
+HAVING total_sales > 100;
