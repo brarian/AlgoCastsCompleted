@@ -1,3 +1,7 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
 var romanToInt = function(s) {
   let obj = {
     I: 1,
@@ -15,13 +19,19 @@ var romanToInt = function(s) {
     CM: 900
   };
 
-  let res = 0;
+  let sum = 0;
   for (let i = 0; i < s.length; i++) {
-    if (obj[s[i - 1]] < obj[s[i]]) {
-      res -= 2 * obj[s[i - 1]];
+    const first = s[i];
+    const second = s[i + 1];
+    const combo = first + second;
+
+    if (obj.hasOwnProperty(combo)) {
+      sum += obj[combo];
+      i++;
+      continue;
     }
-    res += obj[s[i]];
+    sum += obj[first];
   }
 
-  return res;
+  return sum;
 };
